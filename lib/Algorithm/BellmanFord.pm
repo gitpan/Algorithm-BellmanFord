@@ -1,107 +1,25 @@
-#!/usr/bin/perl
-#use strict;
-#use warnings;
 package BellmanFord;
+
+use 5.008004;
 use Carp;
+#our @ISA = qw(Exporter);
+#our @EXPORT = qw();
+require Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = qw();
-=head1 NAME
-#
-# BellmanFord : implements the  algorithm for Directed path to find the shortest path from one node to any other on a network.
-#
-=head1 VERSION
 
-Version 0.01
+# Items to export into callers namespace by default. Note: do not export
+# # names by default without a very good reason. Use EXPORT_OK instead.
+# # Do not simply export all your public functions/methods/constants.
 
-=cut
+# # This allows declaration       use Algorithm::BellmanFord ':all';
+# # If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
+# # will save memory.
+ our %EXPORT_TAGS = ( 'all' => [ qw() ] );
 
-our $VERSION = '0.01';
+ our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
-
-=head1 SYNOPSIS
-
-Quick summary of what the module does:
-The Module is a Flexible and userfriendly implementation of BellmanFord Alorithm and most important, it works for floating point weights!!!.
-It reads the graph input from a txt file and outputs the distance and path from source node to all nodes in the graph
-Then it gives required shortest path to the destination node.
-Output as follows:
-
-Total Nodes = 5  and Links = 8
-
-Welcome to My Bellman algorithm we find solution for source = b and destination
-= e
-a                  122.0     Null -> a
-b                      0     Null -> b
-c                     10     Null -> b -> c
-d                     20     Null -> b -> c -> d
-e                     75     Null -> b -> e
-
-The required solution:
-                             Null -> a -> d
-
-
-
-Input File format:
-nodes <number of nodes>;Links <number of Links>
-<node1>,<node2>,<Distance between them (in floating point format)>
-once list all nodes separated by comma
-path <source node>,<destination node>
-nodes 5;links 8
-a,b,50.0
-a,d,10.0
-b,c,10.0
-b,e,75.0
-c,b,10.0
-c,d,10.0
-d,c,10.0
-d,a,10.0
-a,b,c,d,e
-path b,e
-path a,d
-
-
-Usage:
-use BellmanFord;
-
-$obj = new BellmanFord ('input file path', 'output file path');
-$obj->calculate();
-
-example
-$obj = new BellmanFord ('C:\input.txt', 'C:\output.txt');
-$obj->calculate();
-
-=head1 SUBROUTINES/METHODS
-calculate: will calculate the shortest distance and path and will print to output file.
-         
-=head2 
-
-=cut
-#####################################################################################################
-=head1 AUTHOR
-
-Rohan Kachewar, C<<  at cpan.org> >>
-
-=head1 BUGS
-
-Please report any bugs or feature requests. I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
-
-=head1 LICENSE AND COPYRIGHT
-
-Copyright 2011 Arjun Surendra.
-
-This program is free software; you can redistribute it and/or modify it
-under the terms of either: the GNU General Public License as published
-by the Free Software Foundation; or the Artistic License.
-
-See http://dev.perl.org/licenses/ for more information.
-
-
-=cut
-
-
-
-
+ our @EXPORT = qw();
+ 
 ######################### variables #######
 sub new
 {
@@ -235,6 +153,138 @@ write FILE2;
   }
 }
 1;
+
+__END__
+
+=head1 NAME
+
+Author: Rohan Kachewar
+
+ BellmanFord : implements the  algorithm for Directed path to find the shortest path from one node to any other on a network.
+
+=head1 VERSION
+
+Version 0.01
+
+=cut
+
+our $VERSION = '0.03';
+
+
+=head1 SYNOPSIS
+
+B<Quick summary of what the module does>
+
+The Module is a Flexible and userfriendly implementation of BellmanFord Alorithm and most important, it works for floating point weights!!!.
+It reads the graph input from a txt file and outputs the distance and path from source node to all nodes in the graph
+Then it gives required shortest path to the destination node.
+
+Output as follows:
+
+Total Nodes =   and Links = 
+
+Welcome to My Bellman algorithm we find solution for source = b and destination = e
+
+
+<Destination Node>    <Distance <infinity is denoted by 122.0>>  <Path from source node, denoted as Null>
+
+
+The required solution:
+
+							 <Actual Shortest Path>
+
+
+
+B<Input File format>
+
+Do not leave empty lines in between in input file.
+
+Format:
+
+nodes <number of nodes>;Links <number of Links>
+
+<node1>,<node2>,<Distance between them (in floating point format)>
+
+once list all nodes separated by comma
+
+path <source node>,<destination node>
+
+Example:
+
+nodes 5;links 8
+
+a,b,50.0
+
+a,d,10.0
+
+b,c,10.0
+
+b,e,75.0
+
+c,b,10.0
+
+c,d,10.0
+
+d,c,10.0
+
+d,a,10.0
+
+a,b,c,d,e
+
+path b,e
+
+path a,d
+
+
+B<Usage>
+
+use  Algorithm::BellmanFord;
+
+$obj = new BellmanFord ('input file path', 'output file path');
+
+$obj->calculate();
+
+example
+
+$obj = new BellmanFord ('C:\input.txt', 'C:\output.txt');
+
+$obj->calculate();
+
+=head1 SUBROUTINES/METHODS
+
+B<calculate> : Method will calculate the shortest distance and path and will print to output file.
+         
+=head2 
+
+=cut
+
+#####################################################################################################
+
+=head1 AUTHOR
+
+Rohan Kachewar, C<< rohank at cpan.org> >>
+
+=head1 BUGS
+
+Please report any bugs or feature requests. I will be notified, and then you'll
+automatically be notified of progress on your bug as I make changes.
+
+=head1 LICENSE AND COPYRIGHT
+
+Copyright 2011 Rohan Kachewar.
+
+This program is free software; you can redistribute it and/or modify it
+under the terms of either: the GNU General Public License as published
+by the Free Software Foundation; or the Artistic License.
+
+See http://dev.perl.org/licenses/ for more information.
+
+
+=cut
+
+
+
+
 
 
 
